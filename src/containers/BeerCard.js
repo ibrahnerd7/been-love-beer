@@ -5,7 +5,6 @@ import Image from 'react-bulma-components/lib/components/image';
 import Content from 'react-bulma-components/lib/components/content';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Columns from 'react-bulma-components/lib/components/columns';
-import Icon from 'react-bulma-components/lib/components/icon';
 
 const BeerCard=({beer})=>{
     return(
@@ -27,11 +26,8 @@ const BeerCard=({beer})=>{
  height:"1.2em", 
     }}>{beer.name} </Heading>
 <div>
-        <Icon>
-          <span className="fas fa-home" />
-        </Icon>
       </div>
-              <p  style={{marginStart:16, 
+              <p  style={{marginStart:16,marginTop:0, 
                        overflow: "hidden",
                      whiteSpace: "normal", 
       
