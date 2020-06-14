@@ -1,19 +1,20 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Navbar} from 'react-bulma-components';
 
 const NavbarTop=()=>{
+  const [isCollapsed,setIsCollapsed]=useState(false)
     return(
 <Navbar
         color='primary'
         fixed='top'
-        active={false}
+        active={isCollapsed}
         transparent={false}
       >
         <Navbar.Brand>
           <Navbar.Item renderAs="a" href="#">
             <h1>Been Love Beer</h1>
           </Navbar.Item>
-          <Navbar.Burger />
+          <Navbar.Burger  onClick={()=>setIsCollapsed(!isCollapsed)}/>
         </Navbar.Brand>
         <Navbar.Menu >
          
