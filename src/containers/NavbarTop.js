@@ -18,8 +18,8 @@ function NavbarTop(){
       </Navbar.Brand>
       <Navbar.Menu>
         <Navbar.Container position="end">
-          <Navbar.Item href="#">Home</Navbar.Item>
-          <Navbar.Item href="#">Favourites</Navbar.Item>
+          <Navbar.Item href="#">Login</Navbar.Item>
+          <Navbar.Item href="#">SignUp</Navbar.Item>
         </Navbar.Container>
       </Navbar.Menu>
     </Navbar>

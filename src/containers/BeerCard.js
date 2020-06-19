@@ -5,7 +5,6 @@ import Image from 'react-bulma-components/lib/components/image';
 import Content from 'react-bulma-components/lib/components/content';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Columns from 'react-bulma-components/lib/components/columns';
-import PropTypes, { object } from 'prop-types';
 
 const BeerCard = ({ beer }) => (
 
@@ -47,14 +46,5 @@ const BeerCard = ({ beer }) => (
   </Columns.Column>
 
 );
-
-BeerCard.propTypes = {
-  beer: PropTypes.shape(object),
-
-};
-
-BeerCard.defaultProps = {
-  beer: {},
-};
 
 export default BeerCard;

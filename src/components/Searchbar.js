@@ -8,18 +8,19 @@ import Columns from 'react-bulma-components/lib/components/columns';
 
 const Searchbar = ({submitSearch}) => {
 
-    const[text,setText]=useState();
+    const [text, setText] = useState();
 
-    const submitSearchTerm=(e)=>{
+    const submitSearchTerm = (e) => {
         e.preventDefault()
         submitSearch(text)
+
     }
 
     return (
         <Columns style={{margin: 16}}>
             <Columns.Column size={4}>
                 <Control>
-                    <Input placeholder="Enter beer name" onChange={e=>setText(e.target.value)} value={text} />
+                    <Input placeholder="Enter beer name" onChange={e => setText(e.target.value)} value={text}/>
                 </Control>
             </Columns.Column>
             <Columns.Column>
