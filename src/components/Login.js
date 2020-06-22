@@ -2,25 +2,26 @@ import React, {useState} from "react";
 import Columns from "react-bulma-components/lib/components/columns";
 import {Control, Input, Label} from "react-bulma-components/lib/components/form";
 import Button from "react-bulma-components/lib/components/button";
-import {registerUser} from "../firebase/auth";
+import {loginUser} from "../firebase/auth";
 import Content from "react-bulma-components/lib/components/content";
 
 
-const SignUp = () => {
+const Login = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const signUpUser = async (e) => {
+    const signInUser = async (e) => {
         e.preventDefault()
-        let user = await registerUser(email, password);
+        let user=await loginUser(email,password);
         console.log(user)
     }
 
 
+
     return (
         <Columns mobile>
-            <Columns.Column size="half" offset="one-quarter" style={{marginTop: 32}}>
+            <Columns.Column size="half" offset="one-quarter" style={{marginTop:32}}>
                 <Content>
                     <h1>Sign Up</h1>
                 </Content>
@@ -47,9 +48,9 @@ const SignUp = () => {
                         color="info"
                         type="submit"
                         styles={{padding: 8}}
-                        onClick={signUpUser}
+                        onClick={signInUser}
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </Columns.Column>
             </Columns.Column>
@@ -57,4 +58,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default Login
