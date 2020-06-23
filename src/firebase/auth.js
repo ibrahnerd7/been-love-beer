@@ -4,7 +4,7 @@ export const registerUser = async (email, password) => {
     try {
         return (await authentication.createUserWithEmailAndPassword(email, password)).user
     } catch (error) {
-        console.error(error)
+        return error
     }
 }
 

@@ -5,12 +5,14 @@ import {Control, Input, Label} from "react-bulma-components/lib/components/form"
 import Button from "react-bulma-components/lib/components/button";
 import {registerUser} from "../firebase/auth";
 import Content from "react-bulma-components/lib/components/content";
+import Notification from "react-bulma-components/lib/components/notification";
 
 
 const SignUp = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState(false);
 
     let history = useHistory()
 
@@ -18,9 +20,12 @@ const SignUp = () => {
         e.preventDefault()
         let user = await registerUser(email, password);
 
-        if (user) {
+        if (!user.uid) {
+            setError(user.message)
+        } else {
             history.push("/profile")
         }
+
     }
 
 
@@ -31,6 +36,9 @@ const SignUp = () => {
                     <h1>Sign Up</h1>
                 </Content>
                 <Columns.Column>
+                    {error && <Notification color="danger">
+                        Lorem ipsum dolor sit amet, consectetur
+                        <Button remove/> </Notification>}
                     <Control>
                         <Label>Email Address</Label>
                         <Input
@@ -49,13 +57,14 @@ const SignUp = () => {
                         />
                     </Control>
                     <br/>
+
                     <Button
                         color="info"
                         type="submit"
                         styles={{padding: 8}}
                         onClick={signUpUser}
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </Columns.Column>
             </Columns.Column>
