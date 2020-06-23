@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Navbar} from 'react-bulma-components/lib';
 import Image from "react-bulma-components/lib/components/image";
-import Columns from "react-bulma-components/lib/components/columns";
+import {UserContext} from "../providers/UserProvider";
+import {authentication} from "../firebase/config";
 
-function NavbarTop({user}) {
+
+function NavbarTop() {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const user = useContext(UserContext)
     return (
         <Navbar
             color="primary"
@@ -29,10 +32,10 @@ function NavbarTop({user}) {
                         Login
                     </Navbar.Item>
                     }
-                    <div >
+                    <div>
                         {user && <Image
                             rounded
-                            style={{marginTop:12}}
+                            style={{marginTop: 12}}
                             src={user.photoURL}
                             size={32}
                             alt="user image"/>}
@@ -40,7 +43,10 @@ function NavbarTop({user}) {
                     {user && <Navbar.Item href="/profile">
                         {user.displayName}
                     </Navbar.Item>}
-                    {user && <Navbar.Item onClick={async ()=>await user.signOut()} href="/">
+                    {user &&
+                    <Navbar.Item
+                        onClick={async () => await authentication.signOut().then(() => console.log("signed out"))}
+                        href="/">
                         Sign Out
                     </Navbar.Item>}
 

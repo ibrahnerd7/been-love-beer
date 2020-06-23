@@ -1,4 +1,4 @@
-import React, {Component, createContext, useContext} from "react";
+import React, {Component, createContext,} from "react";
 import {authentication} from '../firebase/config'
 
 export const UserContext = createContext({user: null});
