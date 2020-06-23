@@ -6,17 +6,36 @@ import Button from "react-bulma-components/lib/components/button";
 import {UserContext} from "../providers/UserProvider";
 import Image from "react-bulma-components/lib/components/image";
 import {updateUser} from "../firebase/auth";
+import {storage} from "../firebase/config";
 
 const Profile = () => {
     const user = useContext(UserContext)
-    const {photoUrl, displayName, email} = user
-    const [imageSrc, setImageSrc] = useState(photoUrl)
+    const {photoURL, displayName, email} = user
+
+    const [imageSrc, setImageSrc] = useState(photoURL)
     const [userName, setUserName] = useState(displayName)
 
     let fileInput = React.createRef()
     const handleSubmit = async () => {
-        let response = await updateUser(userName, imageSrc)
-        console.log(await response)
+        //store image to firebase storage and return url
+        const uploadTask = storage.ref(`/images/${fileInput.current.files[0].name}`).put(fileInput.current.files[0])
+        uploadTask.on(
+            "state_changed",
+            null,
+            null,
+            async () => {
+                let imageResponse = await storage.ref("images")
+                    .child(fileInput.current.files[0].name)
+                    .getDownloadURL()
+                    .then(async (imageUrl) => {
+                        console.log(imageUrl)
+                        let response = await updateUser(userName, imageUrl)
+                        console.log(await response)
+                    })
+
+            })
+
+
     };
 
     const onChooseImage = () => {
@@ -71,7 +90,7 @@ const Profile = () => {
                         <Input
                             placeholder="Enter display name"
                             type="text"
-                            value={userName ?userName :""}
+                            value={userName ? userName : ""}
                             onChange={event => setUserName(event.target.value)}
                         />
                     </Control>

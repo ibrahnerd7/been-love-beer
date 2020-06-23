@@ -5,29 +5,33 @@ import Button from "react-bulma-components/lib/components/button";
 import {loginUser} from "../firebase/auth";
 import Content from "react-bulma-components/lib/components/content";
 import Notification from "react-bulma-components/lib/components/notification";
+import {useHistory} from 'react-router-dom'
 
 
 const Login = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [error,setError]=useState();
+    const [error, setError] = useState();
+
+    const history = useHistory()
 
     const signInUser = async (e) => {
         e.preventDefault()
-        let user=await loginUser(email,password);
-
-        if (!user.id){
+        let user = await loginUser(email, password);
+        console.log(user)
+        if (!user.uid) {
             setError(user.message)
+        } else {
+            history.push("/profile")
         }
 
     }
 
 
-
     return (
         <Columns mobile>
-            <Columns.Column size="half" offset="one-quarter" style={{marginTop:32}}>
+            <Columns.Column size="half" offset="one-quarter" style={{marginTop: 32}}>
                 <Content>
                     <h1>Login</h1>
                 </Content>

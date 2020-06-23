@@ -10,8 +10,9 @@ let firebaseConfig = {
     appId: "1:539508038107:web:445ae5ad5e0d33acf3affe",
     measurementId: "G-LLNNEF5CWX"
 }
-// Initialize Firebase
-let app=firebase.initializeApp(firebaseConfig);
+
+let app = firebase.initializeApp(firebaseConfig);
 
 export const authentication = firebase.auth(app);
 export const firestore = firebase.firestore(app);
+export const storage = firebase.storage(app)
