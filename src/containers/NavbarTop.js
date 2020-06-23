@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Navbar} from 'react-bulma-components/lib';
+import Image from "react-bulma-components/lib/components/image";
+import Columns from "react-bulma-components/lib/components/columns";
 
 function NavbarTop({user}) {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -19,14 +21,27 @@ function NavbarTop({user}) {
             </Navbar.Brand>
             <Navbar.Menu>
                 <Navbar.Container position="end">
-                    <Navbar.Item href="/signup">
+                    {!user && <Navbar.Item href="/signup">
                         SignUp
-                    </Navbar.Item>
+                    </Navbar.Item>}
+                    {!user &&
                     <Navbar.Item href="/login">
                         Login
                     </Navbar.Item>
+                    }
+                    <div >
+                        {user && <Image
+                            rounded
+                            style={{marginTop:12}}
+                            src={user.photoURL}
+                            size={32}
+                            alt="user image"/>}
+                    </div>
                     {user && <Navbar.Item href="/profile">
-                        Profile
+                        {user.displayName}
+                    </Navbar.Item>}
+                    {user && <Navbar.Item onClick={async ()=>await user.signOut()} href="/">
+                        Sign Out
                     </Navbar.Item>}
 
                 </Navbar.Container>

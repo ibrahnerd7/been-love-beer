@@ -7,6 +7,7 @@ import {UserContext} from "../providers/UserProvider";
 import Image from "react-bulma-components/lib/components/image";
 import {updateUser} from "../firebase/auth";
 import {storage} from "../firebase/config";
+import {useHistory} from 'react-router-dom';
 
 const Profile = () => {
     const user = useContext(UserContext)
@@ -14,6 +15,7 @@ const Profile = () => {
 
     const [imageSrc, setImageSrc] = useState(photoURL)
     const [userName, setUserName] = useState(displayName)
+    const history=useHistory()
 
     let fileInput = React.createRef()
     const handleSubmit = async () => {
@@ -30,7 +32,7 @@ const Profile = () => {
                     .then(async (imageUrl) => {
                         console.log(imageUrl)
                         let response = await updateUser(userName, imageUrl)
-                        console.log(await response)
+                        history.push("/")
                     })
 
             })

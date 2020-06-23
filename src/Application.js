@@ -18,7 +18,6 @@ const Application = () => {
                     <Route path="/signup" component={SignUp}/>
                     <Route path="/login" component={Login}/>
                     {user && <Route path="/profile" component={Profile}/>}
-
                 </Switch>
             </div>
         </BrowserRouter>
