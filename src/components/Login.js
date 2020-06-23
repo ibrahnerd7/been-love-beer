@@ -23,7 +23,7 @@ const Login = () => {
         <Columns mobile>
             <Columns.Column size="half" offset="one-quarter" style={{marginTop:32}}>
                 <Content>
-                    <h1>Sign Up</h1>
+                    <h1>Login</h1>
                 </Content>
                 <Columns.Column>
                     <Control>
@@ -50,7 +50,7 @@ const Login = () => {
                         styles={{padding: 8}}
                         onClick={signInUser}
                     >
-                        Sign Up
+                        Login
                     </Button>
                 </Columns.Column>
             </Columns.Column>

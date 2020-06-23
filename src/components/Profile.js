@@ -1,34 +1,15 @@
-import React, {useState} from "react";
-import {useHistory} from 'react-router-dom';
+import React from "react";
+import Content from "react-bulma-components/lib/components/content";
 import Columns from "react-bulma-components/lib/components/columns";
 import {Control, Input, Label} from "react-bulma-components/lib/components/form";
 import Button from "react-bulma-components/lib/components/button";
-import {registerUser} from "../firebase/auth";
-import Content from "react-bulma-components/lib/components/content";
 
-
-const SignUp = () => {
-
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-
-    let history = useHistory()
-
-    const signUpUser = async (e) => {
-        e.preventDefault()
-        let user = await registerUser(email, password);
-
-        if (user) {
-            history.push("/profile")
-        }
-    }
-
-
+const Profile = () => {
     return (
         <Columns mobile>
             <Columns.Column size="half" offset="one-quarter" style={{marginTop: 32}}>
                 <Content>
-                    <h1>Sign Up</h1>
+                    <h1>Profile</h1>
                 </Content>
                 <Columns.Column>
                     <Control>
@@ -36,16 +17,13 @@ const SignUp = () => {
                         <Input
                             placeholder="Enter email"
                             type="email" style={{marginBottom: 8}}
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
                         />
                     </Control>
                     <Control>
                         <Label>Password</Label>
                         <Input
                             placeholder="Enter password"
-                            type="password" value={password}
-                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
                         />
                     </Control>
                     <br/>
@@ -53,9 +31,8 @@ const SignUp = () => {
                         color="info"
                         type="submit"
                         styles={{padding: 8}}
-                        onClick={signUpUser}
                     >
-                        Login
+                        Update
                     </Button>
                 </Columns.Column>
             </Columns.Column>
@@ -63,4 +40,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default Profile

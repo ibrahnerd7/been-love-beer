@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {Navbar, Button} from 'react-bulma-components/lib';
-import {NavLink} from "react-router-dom";
+import {Navbar} from 'react-bulma-components/lib';
 
-function NavbarTop() {
+function NavbarTop({user}) {
     const [isCollapsed, setIsCollapsed] = useState(false);
     return (
         <Navbar
@@ -14,21 +13,22 @@ function NavbarTop() {
         >
             <Navbar.Brand>
                 <Navbar.Item renderAs="a" href="/">
-                            <h1>Been Love Beer</h1>
+                    <h1>Been Love Beer</h1>
                 </Navbar.Item>
                 <Navbar.Burger onClick={() => setIsCollapsed(!isCollapsed)}/>
             </Navbar.Brand>
             <Navbar.Menu>
                 <Navbar.Container position="end">
                     <Navbar.Item href="/signup">
-                            SignUp
+                        SignUp
                     </Navbar.Item>
                     <Navbar.Item href="/login">
-                            Login
+                        Login
                     </Navbar.Item>
-                    <Navbar.Item href="/login">
+                    {user && <Navbar.Item href="/profile">
                         Profile
-                    </Navbar.Item>
+                    </Navbar.Item>}
+
                 </Navbar.Container>
             </Navbar.Menu>
         </Navbar>
