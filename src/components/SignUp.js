@@ -37,7 +37,7 @@ const SignUp = () => {
                 </Content>
                 <Columns.Column>
                     {error && <Notification color="danger">
-                        Lorem ipsum dolor sit amet, consectetur
+                        {error}
                         <Button remove/> </Notification>}
                     <Control>
                         <Label>Email Address</Label>

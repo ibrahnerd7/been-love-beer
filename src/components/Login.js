@@ -4,17 +4,23 @@ import {Control, Input, Label} from "react-bulma-components/lib/components/form"
 import Button from "react-bulma-components/lib/components/button";
 import {loginUser} from "../firebase/auth";
 import Content from "react-bulma-components/lib/components/content";
+import Notification from "react-bulma-components/lib/components/notification";
 
 
 const Login = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [error,setError]=useState();
 
     const signInUser = async (e) => {
         e.preventDefault()
         let user=await loginUser(email,password);
-        console.log(user)
+
+        if (!user.id){
+            setError(user.message)
+        }
+
     }
 
 
@@ -27,6 +33,9 @@ const Login = () => {
                 </Content>
                 <Columns.Column>
                     <Control>
+                        {error && <Notification color="danger">
+                            {error}
+                            <Button remove/> </Notification>}
                         <Label>Email Address</Label>
                         <Input
                             placeholder="Enter email"

@@ -13,7 +13,7 @@ export const loginUser = async (email, password) => {
     try {
         return (await authentication.signInWithEmailAndPassword(email, password)).user
     } catch (error) {
-        console.error(error)
+        return error
     }
 }
 
