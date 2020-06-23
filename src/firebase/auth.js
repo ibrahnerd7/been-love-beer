@@ -29,4 +29,10 @@ export const signOutUser = async () => {
 //get user profile
 
 //update user profile
-
+export const updateUser = async (displayName, photoURL) => {
+    try {
+        return await (authentication.currentUser.updateProfile({displayName, photoURL}))
+    } catch (error) {
+        return error
+    }
+}
