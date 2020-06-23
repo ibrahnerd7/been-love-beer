@@ -23,7 +23,7 @@ const Login = () => {
         if (!user.uid) {
             setError(user.message)
         } else {
-            history.push("/profile")
+            history.push("/")
         }
 
     }

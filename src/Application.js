@@ -4,7 +4,7 @@ import BeerList from "./components/BeerList";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-import UserProvider, {UserContext} from "./providers/UserProvider";
+import  {UserContext} from "./providers/UserProvider";
 import React, {useContext} from "react";
 
 const Application = () => {
@@ -17,6 +17,7 @@ const Application = () => {
                     <Route exact path="/" component={BeerList}/>
                     <Route path="/signup" component={SignUp}/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/favourites" component={Profile} />
                     {user && <Route path="/profile" component={Profile}/>}
                 </Switch>
             </div>

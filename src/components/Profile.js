@@ -26,12 +26,12 @@ const Profile = () => {
             null,
             null,
             async () => {
-                let imageResponse = await storage.ref("images")
+              await storage.ref("images")
                     .child(fileInput.current.files[0].name)
                     .getDownloadURL()
                     .then(async (imageUrl) => {
                         console.log(imageUrl)
-                        let response = await updateUser(userName, imageUrl)
+                         await updateUser(userName, imageUrl)
                         history.push("/")
                     })
 
@@ -43,7 +43,7 @@ const Profile = () => {
     const onChooseImage = () => {
         let file = fileInput.current.files[0]
         let reader = new FileReader();
-        let url = reader.readAsDataURL(file)
+       reader.readAsDataURL(file)
 
         reader.onloadend = (e) => {
             setImageSrc(e.currentTarget.result)

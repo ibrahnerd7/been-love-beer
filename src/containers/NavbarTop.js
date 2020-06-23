@@ -45,10 +45,17 @@ function NavbarTop() {
                     </Navbar.Item>}
                     {user &&
                     <Navbar.Item
+                        onClick={() => console.log("signed out")}
+                        href="/favourites">
+                        Favourites
+                    </Navbar.Item>}
+                    {user &&
+                    <Navbar.Item
                         onClick={async () => await authentication.signOut().then(() => console.log("signed out"))}
                         href="/">
                         Sign Out
                     </Navbar.Item>}
+
 
                 </Navbar.Container>
             </Navbar.Menu>
