@@ -7,13 +7,10 @@ import Button from 'react-bulma-components/lib/components/button';
 import Columns from 'react-bulma-components/lib/components/columns';
 
 const Searchbar = ({submitSearch}) => {
-
     const [text, setText] = useState();
-
     const submitSearchTerm = (e) => {
         e.preventDefault()
         submitSearch(text)
-
     }
 
     return (
