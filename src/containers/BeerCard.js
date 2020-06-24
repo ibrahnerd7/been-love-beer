@@ -5,6 +5,7 @@ import Image from 'react-bulma-components/lib/components/image';
 import Content from 'react-bulma-components/lib/components/content';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Columns from 'react-bulma-components/lib/components/columns';
+import Icon from "react-bulma-components/lib/components/icon";
 
 const BeerCard = ({ beer }) => (
 
@@ -40,6 +41,11 @@ const BeerCard = ({ beer }) => (
             </p>
           </Media.Item>
         </Media>
+
+        <Icon>
+          <span className="fas fa-check-square" />
+        </Icon>
+
         <Content />
       </Card.Content>
     </Card>
